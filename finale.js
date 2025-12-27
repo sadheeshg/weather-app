@@ -76,12 +76,14 @@ function fetchWeatherData() {
 
       
       nameOutput.innerHTML = data.name;
-      let iconCode = data.weather[0].icon;
-      if (iconCode) {
-        icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-      } else {
-        icon.src = "images/clear.png"; 
-      }
+      const iconCode = data.weather[0].icon;
+
+icon.onerror = () => {
+  icon.src = "./images/clear.png";
+};
+
+icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
 
      
       cloudOutput.innerHTML = data.clouds.all + "%";
