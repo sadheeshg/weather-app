@@ -74,15 +74,10 @@ function fetchWeatherData() {
       timeOutput.innerHTML = t;
      
 
-      
+      nameOutput.innerHTML = data.name;
       const iconCode = data.weather[0].icon;
-
-icon.onerror = () => {
-  icon.src = "./images/clear.png";
-};
-
-icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-
+      icon.onerror = () => { icon.src = "./images/clear.png"; }; 
+      icon.src =' https://openweathermap.org/img/wn/${iconCode}@2x.png';
 
 
 
