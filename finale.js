@@ -75,14 +75,26 @@ function fetchWeatherData() {
      
 
       
-      nameOutput.innerHTML = data.name;
-      const iconCode = data.weather[0].icon;
+      let iconPath = "images/clear-day.png";
 
-icon.onerror = () => {
-  icon.src = "./images/clear.png";
-};
+if (code === 800) {
+  iconPath = `images/clear-${timeOfDay}.png`;
+}
+else if (code >= 801 && code <= 804) {
+  iconPath = `images/cloudy-${timeOfDay}.png`;
+}
+else if (code >= 500 && code <= 531) {
+  iconPath = `images/rain-${timeOfDay}.png`;
+}
+else if (code >= 600 && code <= 622) {
+  iconPath = `images/snow-${timeOfDay}.png`;
+}
+else if (code >= 701 && code <= 781) {
+  iconPath = `images/mist.png`;
+}
 
-icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+icon.src = iconPath;
+
 
 
      
